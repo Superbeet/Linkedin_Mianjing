@@ -21,3 +21,35 @@ class Solution(object):
         
         return res
             
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if not s:
+            return 0
+        
+        map = {
+            'I':1,
+            'V':5,
+            'X':10,
+            'L':50,
+            'C':100,
+            'D':500,
+            'M':1000,
+        }
+        
+        res = map[s[-1]]
+        size = len(s)
+        
+        for i in xrange(size-2, -1, -1):
+            roman = map[s[i]]
+            if roman<map[s[i+1]]:
+                res -= roman
+            else:
+                res += roman
+        
+        return res
+            
+        
